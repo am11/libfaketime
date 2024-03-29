@@ -242,13 +242,6 @@ clock_gettime (clockid_t clk_id __attribute__((unused)), struct timespec *tp)
   if (!init_done)
     _libfaketime_init ();
 
-  /* Just to be sure... */
-  if (tp == NULL)
-    {
-      DEBUG_MESSAGE
-	("LibFakeTime: clock_gettime(): returning due to NULL pointers...\n");
-      return 0;
-    }
   struct timeval tv;
   retval = gettimeofday (&tv, NULL);
   DEBUG_MESSAGE ("LibFakeTime: clock_gettime(): retval = %i...\n", retval);
